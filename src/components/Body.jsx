@@ -7,16 +7,13 @@ const Body = () => {
   const [filteredRestuarant, setFilteredRestaurant] = useState(resList);
   const [searchText, setSearchText] = useState("");
 
-  const onClickSearch = (e) => {
-    e.preventDefault();
+  const onChangeSearch = (e) => {
+    const { value } = e.target;
+    setSearchText(value);
     const filteredRestaurants = restaurantsList.filter((restaurant) =>
-      restaurant.info.name.toLowerCase().includes(searchText.toLowerCase()),
+      restaurant.info.name.toLowerCase().includes(value.toLowerCase()),
     );
-    if (filteredRestaurants !== "") {
-      setFilteredRestaurant(filteredRestaurants);
-    } else {
-      setFilteredRestaurant(resList);
-    }
+    setFilteredRestaurant(filteredRestaurants);
   };
 
   const filterTopRestaurants = () => {
@@ -34,23 +31,16 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
-        <form className="form-inline my-2 my-lg-0 d-flex">
+        <div className="my-2 my-lg-0 d-flex">
           <input
             className="form-control mr-sm-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
             value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
+            onChange={onChangeSearch}
           />
-          <button
-            onClick={onClickSearch}
-            className="btn btn-outline-success my-2 my-sm-0"
-            type="submit"
-          >
-            Search
-          </button>
-        </form>
+        </div>
       </div>
 
       <div className="row">
