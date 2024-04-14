@@ -20,7 +20,7 @@ const Body = () => {
     const filterRestuarants = restaurantsList.filter((restaurant) => {
       return restaurant?.info?.avgRating > 4.5;
     });
-    setRestaurantsList(filterRestuarants);
+    setFilteredRestaurant(filterRestuarants);
   };
   return (
     <div className="container my-4">
