@@ -1,4 +1,14 @@
+import { useState } from "react";
+
 const Header = () => {
+  const [logout, setLogout] = useState(false);
+  const logoutHandler = () => {
+    setLogout(true);
+  };
+
+  const loginHandler = () => {
+    setLogout(false);
+  };
   return (
     <header className="navbar-light bg-light">
       <nav className="navbar navbar-expand-lg  container">
@@ -32,6 +42,15 @@ const Header = () => {
               <a className="nav-link" href="#">
                 Cart
               </a>
+              {!logout ? (
+                <button className="btn btn-danger" onClick={logoutHandler}>
+                  Logout
+                </button>
+              ) : (
+                <button className="btn btn-success" onClick={loginHandler}>
+                  Login
+                </button>
+              )}
             </div>
           </div>
         </div>
