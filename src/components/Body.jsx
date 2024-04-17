@@ -22,6 +22,14 @@ const Body = () => {
     });
     setFilteredRestaurant(filterRestuarants);
   };
+
+  const fastDelivery = () => {
+    const delivery30Min = restaurantsList.filter(
+      (res) => res.info?.sla?.deliveryTime < 30,
+    );
+    setFilteredRestaurant(delivery30Min);
+  };
+
   return (
     <div className="container my-4">
       <div className="d-flex justify-content-between">
@@ -29,7 +37,10 @@ const Body = () => {
           className="btn btn-primary"
           onClick={() => filterTopRestaurants()}
         >
-          Top Rated Restaurants
+          Rating 4.5+
+        </button>
+        <button className="btn btn-primary" onClick={() => fastDelivery()}>
+          Fast Delivery
         </button>
         <div className="my-2 my-lg-0 d-flex">
           <input
